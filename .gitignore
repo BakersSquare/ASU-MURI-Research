@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# PERSONAL RESEARCH FOLDERS
+personal-research/
+
 # C extensions
 *.so
 
