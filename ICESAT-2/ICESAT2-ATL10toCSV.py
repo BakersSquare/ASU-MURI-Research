@@ -32,19 +32,27 @@ if(len(sys.argv) >= 1):
         # Consider adding a for loop to do this same process but for all 6 beams gt1r/l, gt2r/l, gt3r/l
         # Ex: Declare the starting beam names, and iterate through that array and push the variables into another array
         #       where you then supply them into df
-        with h5py.File(FILE_NAME, mode='r') as f:
+        with h5py.File(FILE_NAME, mode='r') as file:
 
-            latvar = f['/gt1r/freeboard_beam_segment/beam_freeboard/latitude']
+            filePathToBeamData = "freeboard_beam_segment/beam_freeboard"
+            filePathToHeightData = "freeboard_beam_segment/height_segments"
+
+            try:
+                latvar = file[f'/gt1r/{filePathToBeamData}/latitude']
+            except:
+                filePathToBeamData = "freeboard_segment"
+                filePathToHeightData = "freeboard_segment/heights"
+                latvar = file[f'/gt1r/{filePathToBeamData}/latitude']
             latitude = latvar[:]
             latitude = list(latitude)
             
-            lonvar = f['/gt1r/freeboard_beam_segment/beam_freeboard/longitude']
+            lonvar = file[f'/gt1r/{filePathToBeamData}/longitude']
             longitude = lonvar[:]
             longitude = list(longitude)
             
             # Start reading in the first set of GT1R beams
-            dset_name = '/gt1r/freeboard_beam_segment/beam_freeboard/beam_fb_height'
-            datavar = f[dset_name]
+            dset_name = f'/gt1r/{filePathToBeamData}/beam_fb_height'
+            datavar = file[dset_name]
             data = datavar[:]
 
             # # Assign the Fill Value once
@@ -55,8 +63,8 @@ if(len(sys.argv) >= 1):
             data = np.ma.masked_where(np.isnan(data), data)
 
             # Read in the second (central) strong beam
-            dset_name = '/gt2r/freeboard_beam_segment/beam_freeboard/beam_fb_height'
-            datavar = f[dset_name]
+            dset_name = f'/gt2r/{filePathToBeamData}/beam_fb_height'
+            datavar = file[dset_name]
             data2 = datavar[:]
 
             # Handle FillValue
@@ -64,31 +72,31 @@ if(len(sys.argv) >= 1):
             data2 = np.ma.masked_where(np.isnan(data2), data2)
 
             # Read in the last (central) strong beam
-            dset_name = '/gt3r/freeboard_beam_segment/beam_freeboard/beam_fb_height'
-            datavar = f[dset_name]
+            dset_name = f'/gt3r/{filePathToBeamData}/beam_fb_height'
+            datavar = file[dset_name]
             data3 = datavar[:]
 
             # Handle FillValue
             data3[data3 == _FillValue] = np.nan
             data3 = np.ma.masked_where(np.isnan(data3), data3)
 
-            timevar = f['/gt1r/freeboard_beam_segment/beam_freeboard/delta_time']
+            timevar = file[f'/gt1r/{filePathToBeamData}/delta_time']
             time = timevar[:]
             time = list(time)
 
-            data2conf = f['/gt2r/freeboard_beam_segment/beam_freeboard/beam_fb_confidence']
+            data2conf = file[f'/gt2r/{filePathToBeamData}/beam_fb_confidence']
             data2conf = list(data2conf[:])
 
-            heightSegConf = f['/gt2r/freeboard_beam_segment/height_segments/height_segment_confidence']
+            heightSegConf = file[f'/gt2r/{filePathToHeightData}/height_segment_confidence']
             heightSegConf = list(heightSegConf[:])
 
-            heightSegType = f['/gt2r/freeboard_beam_segment/height_segments/height_segment_type']
+            heightSegType = file[f'/gt2r/{filePathToHeightData}/height_segment_type']
             heightSegType = list(heightSegType[:])
 
-            heightSegRefl = f['/gt2r/freeboard_beam_segment/height_segments/asr_25']
+            heightSegRefl = file[f'/gt2r/{filePathToHeightData}/asr_25']
             heightSegRefl = list(heightSegRefl[:])
 
-            qualityFlag = f["/gt2r/freeboard_beam_segment/beam_freeboard/beam_fb_quality_flag"]
+            qualityFlag = file[f"/gt2r/{filePathToBeamData}/beam_fb_quality_flag"]
             qualityFlag = list(qualityFlag[:])
 
             dateTime = []
