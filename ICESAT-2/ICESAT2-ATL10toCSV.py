@@ -21,18 +21,23 @@ if(len(sys.argv) == 1):
 
 if(len(sys.argv) >= 1):
     for x in range(1, len(sys.argv)):
-        FILE_NAME = sys.argv[x]
-        if(FILE_NAME[-3:] != ".h5"):
-            print("Encountered unexpected file type: " + FILE_NAME)
+        path = sys.argv[x]
+        pathParts = path.split("\\")
+        file_name = pathParts[-1]
+        del pathParts[-1]
+        if(file_name[-3:] != ".h5"):
+            print("Encountered unexpected file type: " + file_name)
             print("Only .h5 files are supported. Now exiting...")
             quit()
-        OUT_FILE = FILE_NAME[:-3] + ".csv"
+        pathParts.append(file_name)
+        print(file_name)
+        out_file = '/'.join(pathParts) + ".csv"
 
 
         # Consider adding a for loop to do this same process but for all 6 beams gt1r/l, gt2r/l, gt3r/l
         # Ex: Declare the starting beam names, and iterate through that array and push the variables into another array
         #       where you then supply them into df
-        with h5py.File(FILE_NAME, mode='r') as file:
+        with h5py.File(path, mode='r') as file:
 
             # We'll need to restructure our script to call functions that pull this information out.
             # We could make a function and pass in these variables as keys? That way we can avoid drawing them out.
@@ -58,7 +63,6 @@ if(len(sys.argv) >= 1):
             print(filePathToHeightData)
 
             for beam in beam_enum:
-                print(beam)
                 # Read in the lat/lon
                 latvar = file[f'/{beam}/{filePathToBeamData}/latitude']
                 latitude = list(latvar[:])
@@ -156,7 +160,7 @@ if(len(sys.argv) >= 1):
             # Drop all rows where ICESAT has no FB height data across any of it's beams
             df = df.dropna(subset=data_cols, thresh = 1)
 
-            df.to_csv(OUT_FILE, date_format=None)
+            df.to_csv(out_file, date_format=None)
 
             print("\nSuccesfully wrote to output csv. Dataframe shape:")
             print(df.shape)
