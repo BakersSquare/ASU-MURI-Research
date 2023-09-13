@@ -9,6 +9,12 @@ personal-research/
 # C extensions
 *.so
 
+# Specific CSV files should not be stored in this repository
+# At the moment, test-cases should be transferred in full between
+# individuals and not through the repository.
+*.csv
+*.xlsx
+
 # Distribution / packaging
 .Python
 build/
