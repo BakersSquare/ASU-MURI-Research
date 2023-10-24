@@ -3,6 +3,16 @@ This changelog is used to track the how the model changes through experimentatio
 Comments should also be included.
 ----
 
+[1.0.3] 10-23-23
+- https://www.sciencedirect.com/science/article/pii/S0925231219313803 -> Impact of fully connected layer dimensionality on performance
+- A regression based CNN is a *wide* dataset because it has fewer datapoints per class (continous value, thus infinite). Wide datasets tend to perform better with more fully connected
+        layers and **more** neurons (pg 8)
+- Could not find a specific paper to cite, but Adam optimizer tends to have better performance / faster convergence than RMSprop for most problems.
+- Set conv2 output layers to be of size 4x4 by adjusting the fully connected layer dimensions. Note that performance on 5 epochs is essentially the same as on 20 epochs and that
+        the network guesses around the mean for most values. Look into ways to make sure the network is sensitive to outliers. This could be done by externally examining the outliers
+        and trying to decipher whether there is a feature that the model can be trained to look for.
+- TODO: Clean input data of mostly black tiles.
+
 [1.0.2] 10-22-23
 - Added hook into the second layer of convolutions and some code to visualize it after training.
 - Visualized different interpolations of CNN inputs and intermediate feature maps.
