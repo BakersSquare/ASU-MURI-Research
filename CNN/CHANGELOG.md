@@ -3,6 +3,24 @@ This changelog is used to track the how the model changes through experimentatio
 Comments should also be included.
 ----
 
+[1.0.4] 11-12-23
+- Manually cleaned input data and removed all tiles containing an edge of the SAR. Removing 130 tiles, leaving 3,675 tiles. Essentially 3.4165% of our data was bad.
+- Plotted the distributions of the input vs output data, suggesting there's an overfitting happen (which I'd assume is because of the fully connected layers or our RMSE optimization function). 
+        According to "ASU-MURI-Research/personal-research/Image Processing/CNN Research/fc layer suggestions.pdf" a shallow network requires more FC layers. But because we have the RMSE optimizer as our
+        activation function, it could be forcing these dense layers to optimize towards the mean. It makes sense that the distribution of guesses is slightly above the input mean because the distribution is not normal
+        and actually has a slight right tail. Or it could be because there are only so many combinations of our final feature space that each matrix gets mapped down to near the mean. Maybe our convolution steps should
+        take more steps to shrink in fewer dimensions.
+        Knowing that feature maps representing less *abstract* data, which is ours because our feature map begins in small dimension as it is and we perform few convolutions, need more FC layers, we should first work on increasing
+        the output size of our 2nd convolution. Switching to an L1 Loss function appeared to help the spread of the output data, but it's comparable to the spread achieved using regular RMSE. This means our problem will likely
+        need to be addressed elsewhere.
+- Network Changes:
+       - Assumed normalization was not happening correctly -> Immediately spread out the final distribution of guesses
+       - Removed pooling and tested the effects of a single fully connected layer
+- TODO: Make sure the transforms object is doing what we expect it to do, or consider developing without the normalizing. It could be that our target values were all normalized values and that we were supposed to unnormalize them before
+        testing.
+        https://stackoverflow.com/questions/49444262/normalize-data-before-or-after-split-of-training-and-testing-data
+- CONSIDER: Modifying the CNN to output a regression value of distributions (https://medium.com/hal24k-techblog/a-guide-to-generating-probability-distributions-with-neural-networks-ffc4efacd6a4)
+
 [1.0.3] 10-23-23
 - https://www.sciencedirect.com/science/article/pii/S0925231219313803 -> Impact of fully connected layer dimensionality on performance
 - A regression based CNN is a *wide* dataset because it has fewer datapoints per class (continous value, thus infinite). Wide datasets tend to perform better with more fully connected
