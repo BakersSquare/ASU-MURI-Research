@@ -3,6 +3,11 @@ This changelog is used to track the how the model changes through experimentatio
 Comments should also be included.
 ----
 
+[1.0.5] 1-14-24
+- ***No model changes***
+- Git Repo has been updated in anticipation for SLEA ICEYE data delivery (15km x 15km, 1m resolution SLEA imaging).
+- Consideration: The model as it stands has a problem where it overfits by guessing near the mean. This could be happening because the majority of the training data has overlap with the corresponding neighboring tiles (due to stubbing the SAR imaging with 50m resolution Sentinel 1 imaging). This frequent overlapping could bias the moddel into essentially tripling the likelihood that it see's a remarkably average tile. Moving forward with the ICEYE 1m resolution data, investigate whether this distribution holds true even when tiles have 6-10px buffers from overlapping. This can be done inherently, or the new data can be tiled into explicitly distinct tiles (15000 / 17m distinct tiles)
+
 [1.0.4] 11-12-23
 - Manually cleaned input data and removed all tiles containing an edge of the SAR. Removing 130 tiles, leaving 3,675 tiles. Essentially 3.4165% of our data was bad.
 - Plotted the distributions of the input vs output data, suggesting there's an overfitting happen (which I'd assume is because of the fully connected layers or our RMSE optimization function). 
