@@ -3,6 +3,15 @@ This changelog is used to track the how the model changes through experimentatio
 Comments should also be included.
 ----
 
+[1.0.6] 1-22-24
+- ***No model changes***
+- Scripts are changed to accept the delivered SLEA data.
+- TODO: Redevelop the tiled images and include the [0-255] scaling in the gdal.translate() method. Right now the CNN is previewing them as miscolored and it's likely because the pixel values
+        are not valid grayscale
+- Reconsidered the previous comments - It's likely the model highly biased the mean because each pixel was the running 50m average height, and each new tile only varied by 1 column of pixels. Thus 
+        the majority of the model was made through averages and their slight variations. The new data should be an improvement from this because of it's high resolution and ability to capture the
+        discrete ICESAT2 footprint.
+
 [1.0.5] 1-14-24
 - ***No model changes***
 - Git Repo has been updated in anticipation for SLEA ICEYE data delivery (15km x 15km, 1m resolution SLEA imaging).
