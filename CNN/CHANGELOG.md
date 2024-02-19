@@ -3,6 +3,15 @@ This changelog is used to track the how the model changes through experimentatio
 Comments should also be included.
 ----
 
+[1.0.7] 2-18-24
+- ***No model changes***
+- The ATL10 Data Parser outputs all 6 beams' data across multiple columns. This is not very useful when viewing the data in GDAL, and overcomplicates the tiling code.
+- A separate script was writeen to convert the previous data export (the .h5 extractor) into a single column of individual points. This spreadsheet can then be imported into QGIS and clipped to only
+        the values that are present in the TIF.
+- Realized that the georeferencing for tiling was not callable because it must first be translated to a specific CRS. Upon calling the tiler on the WSG84 Projection of the original tiff, all images
+        were successfully tiled.
+- Use sar-tiler.ipynb moving forward with tiling images.
+
 [1.0.6] 1-22-24
 - ***No model changes***
 - Scripts are changed to accept the delivered SLEA data.
