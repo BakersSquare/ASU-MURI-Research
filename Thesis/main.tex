@@ -1,7 +1,10 @@
 \documentclass[11pt, a4paper, oneside]{book}
 \usepackage[utf8]{inputenc}
 \usepackage[backend=biber, style=ieee]{biblatex}
-
+% Packages validated to be needed
+\usepackage{graphicx}       % for minipage
+\usepackage{amsmath}        % for align*
+%
 \addbibresource{references.bib} %Imports bibliography file
 
 
@@ -33,30 +36,29 @@
 
 %\linespread{0.4}
 
-\def\whatIsIt{Barrett Undergraduate Thesis}
-\def\title{Title Here}
-\def\fakultaet{School of Computing and Augmented Intelligence}
+\def\paperType{Honors Thesis}
+\def\title{Modeling Sea Ice Thickness using Machine Learning and Remote Sensing Modalities}
+\def\honorsCollege{Barrett, The Honors College}
+\def\collegeOfMajor{Ira A. Fulton Schools of Engineering}
+\def\schoolOfMajor{School of Computing and Augmented Intelligence}
 
 
 \def\author{John Baker}
+\def\director{Dr.~Douglas Cochran}
+\def\secondReader{Dr.~Hua Wei}
 %\def\addrLineEins{Thesis Time Period}
-\def\addrLineZwei{Study Program}
-\def\matrikelNr{1234567890}
+\def\majorOfStudy{Study Program}
+\def\studentId{1234567890}
 %\def\semester{Insert Semester and Academic Year}
 
 \def\location{Duisburg}
 \def\date{Month, Year}
-
-\def\betreuer{Prof. Dr. Irene-Angelica Chounta}
-\def\ersterGutachter{Prof. Dr. Name}
-\def\dept{Department for Human-Centered Computing and Cognitive Science (HCCCS)} 
-\def\researchgroup{Computational Methods in Modeling and Analysis of Learning Processes}
-
     
 
 
 \begin{document}
 
+    \include{approval}
     % This is an example of the thesis outline. Please adapt this template to fit your needs.
 	\include{title}
 	
