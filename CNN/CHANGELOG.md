@@ -3,6 +3,10 @@ This changelog is used to track the how the model changes through experimentatio
 Comments should also be included.
 ----
 
+[1.0.8] 2-26-24
+- Experimented with lambda transforms function (scaling to 255) and setting batch size to 8
+- Not enough testing was done to validate either of these but it may be worth exploring
+
 [1.0.7] 2-18-24
 - ***No model changes***
 - The ATL10 Data Parser outputs all 6 beams' data across multiple columns. This is not very useful when viewing the data in GDAL, and overcomplicates the tiling code.
