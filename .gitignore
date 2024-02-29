@@ -9,6 +9,21 @@ personal-research/
 # C extensions
 *.so
 
+# Specific CSV files should not be stored in this repository
+# At the moment, test-cases should be transferred in full between
+# individuals and not through the repository.
+*.csv
+*.xlsx
+
+# H5 and .tiff files are also large, these should also be transferred externally
+*.h5
+*.tiff*
+
+# LaTeX Ignore all files except .tex and .bib files
+Thesis/*.*
+!Thesis/*.tex
+!Thesis/*.bib
+
 # Distribution / packaging
 .Python
 build/

@@ -1,0 +1,14 @@
+Overview:
+This folder contains the convolutional neural network for mapping IceSat-2 accuracy onto Sentinel2 SAR imaging.
+In the future, the Sentinel2 data will be replaced with ICEYE's SPOT resolution SAR which will provide much better
+geo-spatial accuracy. Although Sentinel2's SAR imaging has much lower resolution (50m compared to ICEYE's 1m), it is
+much more available and we already have a more-or-less coincident test case to work with. For the development of the model,
+Sentinel2 data will be treated as if it were ICEYE data so that a successful model should map well to our ordered
+ICEYE data product.
+
+File structure:
+
+CNN.ipynb             # The notebook containing the CNN (train/test, architecture, training, testing)
+CHANGELOG.md          # A markdown file explaining the iterations of the model over time
+src/*                 # Dependencies of the model, split by their origin. For example, sentinel2 imaging 
+                      #   (likely pulled from a local tiling script) will be in the sentinel2 sub-directory
