@@ -4,9 +4,15 @@
 % Packages validated to be needed
 \usepackage{graphicx}       % for minipage
 \usepackage{amsmath}        % for align*
+\usepackage{indentfirst}    % for indenting paragraphs after titles
+\usepackage{fancyhdr}       % For modifying header style and or size
+\usepackage{titlesec}       % For removing 'chapter N' from section titles
+\usepackage{setspace}       % Used for double spacing
 %
 \addbibresource{references.bib} %Imports bibliography file
-
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries}{}{0pt}{\Huge}        % For removing 'chapter N' from titlesec
+\titlespacing*{\chapter} {0pt}{0pt}{40pt}      % For removing 'chapter N' from titlesec
+\doublespacing          % double spacing from setspace
 
 \usepackage{microtype}
 
@@ -22,8 +28,6 @@
 \usepackage{graphicx}
 \graphicspath{ {./images/} }
 
-\usepackage{fancyhdr}
-\setlength{\headheight}{15pt}
 
 
 \usepackage{xspace}
@@ -53,32 +57,24 @@
 
 \def\location{Duisburg}
 \def\date{Month, Year}
-    
+\setlength\parindent{24pt}
 
 
 \begin{document}
-
     \include{approval}
     % This is an example of the thesis outline. Please adapt this template to fit your needs.
 	\include{title}
-	
 
-    \cleardoublepage
-    \pagestyle{empty}
     \include{acknowledgement}
-    \pagestyle{empty}
 
-    \thispagestyle{plain}
-    \input{abstract}
+    \include{abstract}
 
+    \begin{onehalfspace}
     \tableofcontents
+	\end{onehalfspace}
 
+    \clearpage
     
-    \mainmatter
-	\lhead{}
-	\chead{}
-	\pagestyle{fancy}
-	
     \include{Introduction}
     \include{dataCollection}
     \include{Experimentation}

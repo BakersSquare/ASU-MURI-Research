@@ -1,9 +1,24 @@
 \chapter{Introduction}
 \label{sec:Introduction}
 
+A distinct problem arising from attempting to study the exact state of sea ice is that there is limited data available. Data pertaining to sea ice is widely distributed, not correlated, or limited in scope such that it's difficult to draw inferences from. Naturally, the immediate approach to this thesis will first require research into available data sources before conducting any exploration. Exploration of these sources will reveal which sources should be targeted for the remainder of the thesis.
+\\
+\indent After reviewing the preliminary research, this paper will move forward to a more targeted effort in obtaining and analyzing data to develop a machine learning model. Chapter 2 will describe the process of obtaining the selected data, and Chapter 3 will discuss the methodology of developing the model.
+------------
+\\
 Provide a general introduction to what the thesis is all about. Here you present the question or problem you aim to answer or address with your thesis, some of the reasons why it is a worthwhile topic, what has been done in prior work and where the gap is that the thesis addresses.
 
-\section{Motivation for research}
+\section{Preliminary Research}
+Preliminary research into the availability of ice thickness data yields 2 notable organizations which may act as sources of data. These 2 organizations are the National Snow and Ice Data Center (NSIDC), and the National Aeronautics and Space Administration (NASA). Although both organizations offer large amounts of data, they differ in approach. The NSIDC acts as a historic repository, accumulating previous studies into a single location for easy access. NASA offers a similar service, but additionally allows researchers the opportuntity to query information from any of their active orbitting satellites.
+
+\subsection*{NASA}
+Here is where you should include sources to the ATL10 Data Specification pdf, and the associated CryoSat data specs. It should also be included where these links came from. It also should be included where, if applicable, specific data downloads were from.
+
+Somewhere you should discuss IceSat-2 and its laser altimetry. ESPECIALLY that it's 17m footprint offers precision at a given location, 
+\subsection*{NSIDC}
+Here is where the NSIDC links and data retrieval should be discussed. Preliminary exploration will be where the figures will be uploaded (Or maybe we show one figure showing all of the points, and the exploration will be for the single instance?)
+
+Consider a high level overview of major sources of data - NASA, NSIDC. 
 Here you present the motivation for this thesis, the research questions you aim to answer, and the contribution of your work.
-\section {Thesis structure}
-Here you present the structure of your thesis
+\section {Preliminary Exploration}
+Here, go through the data sources enumerated in the preliminary research and identify topics of interest and what you learned or explored from them (such as the NSIDC repo and showing that ICE is not normally distributed as well as the spread distribution of in-situ data. Also funnel down into why IceSat-2 and Sentinel-2 / ICEYE were eventually chosen for the model.)
