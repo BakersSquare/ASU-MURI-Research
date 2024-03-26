@@ -19,10 +19,11 @@ personal-research/
 *.h5
 *.tiff*
 
-# LaTeX Ignore all files except .tex and .bib files
+# LaTeX Ignore all files except .tex, .bib, and a viewable .pdf files
 Thesis/*.*
 !Thesis/*.tex
 !Thesis/*.bib
+!Thesis/*.pdf
 
 # Distribution / packaging
 .Python
