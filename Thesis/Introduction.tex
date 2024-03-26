@@ -9,7 +9,7 @@ A distinct problem arising from attempting to study the exact state of sea ice i
 Provide a general introduction to what the thesis is all about. Here you present the question or problem you aim to answer or address with your thesis, some of the reasons why it is a worthwhile topic, what has been done in prior work and where the gap is that the thesis addresses.
 
 \section{Preliminary Research}
-Preliminary research into the availability of ice thickness data yields two notable organizations which may act as sources of data. These two organizations are the National Snow and Ice Data Center (NSIDC), and the National Aeronautics and Space Administration (NASA). Although both organizations offer large amounts of data, they differ in approach. The NSIDC acts as a historic repository, accumulating previous studies into a single location for easy access. NASA offers a similar service, but additionally allows researchers the opportuntity to query information from any of their active orbitting satellites.
+Preliminary research into the availability of ice thickness data yields two notable organizations which may act as sources of data. These two organizations are the National Snow and Ice Data Center (NSIDC), and the National Aeronautics and Space Administration (NASA). Although both organizations offer large amounts of data, they differ in approach. The NSIDC acts as a historic repository, accumulating previous studies into a single location for easy access. NASA offers a similar service, but additionally allows researchers the opportuntity to query information from any of their active orbiting satellites.
 /// Add the European Space Agency as another portal - as this will be discussed in preliminary exploration. If not, it will surely need to be discussed somewhere, including the process of retrieving it, because it's the data set we're using for the model.  ////
 
 \subsection*{NASA}
@@ -25,21 +25,39 @@ Here is where the NSIDC links and data retrieval should be discussed. Limitation
 Data of interest were the IceSat-2 ATL10 product and the NSIDC In-situ Dataset, selected for their combination of breadth and accuracy. Furthermore, the European Space Agency's requirements for sponsored data need to be explored to pursue the higher resolution SAR imagery hoped for. //
 After preliminary exploration, NASA's IceSat-2 satellite and the NSIDC's "On-Ice Arctic Sea Ice Thickness Measurements by Auger, Core, and Electromagnetic Induction, from the Late 1800s Onward, Version 2" dataset appeared to be the most promising sources of truth for the study. The in-situ measurements would be invaluable in developing a basic understanding of how ice actually is, while the laser altimetry appears to be second-most accurate, especially in consideration of the availability of data it offers.
 \subsection*{NASA}
-A single delivery of IceSat-2's ATL10 data product yields a '.h5' file, incompatibile with traditional spreadsheets. To access IceSat-2 data in a meaningful way, involved developing a script to extract relevant information according to the types enumerated in the data product specificiation. Columns of interest include the latitude, longitude, time, and calculated freeboard height for each of the three beam pairs.
+A single delivery of IceSat-2's ATL10 data product yields a '.h5' file, incompatible with traditional spreadsheets. To access IceSat-2 data in a meaningful way involved developing a script to extract relevant information according to the types enumerated in the data product specification. Columns of interest include the latitude, longitude, time, and calculated freeboard height for each of the three beam pairs.
+// Consider adding perl and dynamically adding sample rows from the extracted .h5 file. This will give the reader context as to what's being gathered /
 \subsection*{NSIDC}
-The "On-Ice Arctic Sea Ice Thickness Measurements by Auger, Core, and Electromagnetic Induction, from the Late 1800s Onward, Version 2" contains 69,750 rows of data, spanning 5 categorized regions; the Arctic Ocean, the Beaufort Sea, Greenland Coast, Prudhoe Bay, and Russian Coast. Filtering down to the Beaufort Sea region, a region of interest, yields 23 separate studies ranging between 1958 to 2016.
-\begin{figure}[h]
+\paragraph*{}
+The "On-Ice Arctic Sea Ice Thickness Measurements by Auger, Core, and Electromagnetic Induction, from the Late 1800s Onward, Version 2" contains 69,750 rows of data, spanning 5 categorized regions; the Arctic Ocean, the Beaufort Sea, Greenland Coast, Prudhoe Bay, and Russian Coast. Filtering down to the Beaufort Sea region, a region of interest, yields 23 separate studies ranging between 1958 and 2016.
+\par
+%%% Modify which figures you're showing and in what order. It's not apparent what direction you're trying to go from here if you leave all 3 together like this.
+\begin{figure}[htb]
 	\centering
-	\includegraphics[width=\linewidth]{../research-resources/in-situ/Plotted-Tracks.png}
-	\caption{Beaufort Sea In-Situ Studies}
-	\label{fig:bfsea-in-situ-agg}
+	\subfigure{\includegraphics[width=0.8\textwidth]{../research-resources/in-situ/Plotted-Tracks.png}} 
+	\subfigure{\includegraphics[width=0.5\textwidth]{../research-resources/in-situ/region-of-interest.png}} 
+	\caption{In-Situ Data Availability}
+	\label{fig:foobar}
 \end{figure}
 
-For a simple analysis, the largest single dataset was chosen to conduct a simple test on the distribution of sea ice thickness. This distribution if normal will reasonably allow for future condicting of statistical tests, and if not normal will give insight as to what a reasonable assumption of ice thickness distribution should be. The following data set is composed of 21,547 distinct points which would intuitively capture the simple patterns that are hoped to be extracted.
 
-\begin{figure}[h]
+\paragraph*{}
+For a simple analysis, the largest single dataset was chosen to conduct a simple test on the distribution of sea ice thickness. This distribution if normal will reasonably allow for future conducting of statistical tests, and if not normal will give insight as to what a reasonable assumption of ice thickness distribution should be. The largest dataset consists of 21,547 distinct points sourced from direct auger measurements and indirect electromagnetically sensed methods. Given that the majority of the data comes from the remote sensed method, it was validated by plotting the sensed values against the auger values where applicable and seeing how correlated they were. The results of a linear regression test yielded a relationship of 0.92x + 0.18, with an adjusted R\^2 value of 0.866 and a P Value of 2.31 * 10\^-202. The adjusted R\^2 value and low P value demonstrate there is a high correlation between these variables, and our model captures a significant portion of the variance. The 0 line is plotted as a way to visualize how the residuals are symmetrically clustered around 0.
+\par
+
+\begin{figure}[htb]
 	\centering
-	\includegraphics[width=.8\linewidth]{../research-resources/in-situ/region-of-interest.png}
-	\caption{}
-	\label{fig:bfsea-in-situ-spec}
+	\includegraphics[width=.6\linewidth]{../research-resources/in-situ/auger-vs-em-thickness.png}
+	\caption{Electromagnetic vs Auger Sourced Relationship}
+	\label{fig:aug-vs-em}
+\end{figure}
+
+\paragraph*{}
+After accepting the validity of the electromagnetically sensed data, the points were plotted to visualize the strip of ice that was measured. Given that these data points were taken in a single linear track, the line graph shows a cross-sectional profile of ice in that axis. The distribution reveals a slight tail on the left side of the curve, and a hypothesis test confirms that the distribution is not normal. Moving forward, it is reasonable to believe that ice distribution is not normal, and over a large enough sample there is expected to be a slight tail on either end.
+\par
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=\linewidth]{../research-resources/in-situ/track-graphs-p-test.png}
+	\caption{In-Situ Ice Thickness Distribution}
+	\label{fig:p-test-aug}
 \end{figure}
