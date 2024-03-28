@@ -2,14 +2,19 @@
 \label{sec:Introduction}
 
 \paragraph{}
-A distinct problem arising from attempting to study the exact state of sea ice is that there is limited data available. Data pertaining to sea ice is widely distributed, not correlated, or limited in scope such that it's difficult to draw inferences from. Naturally, the immediate approach to this thesis will first require research into available data sources before conducting any exploration. Exploration of these sources will reveal which sources should be targeted for the remainder of the thesis.
+A distinct problem arising from attempting to study the exact state of sea ice is that there is limited data available. Data pertaining to sea ice is widely distributed, not correlated, or limited in scope such that it's difficult to draw inferences from. Naturally, the immediate approach to this thesis will first require research into available data sources before conducting any exploration. This exploration will reveal which sources should be targeted for the remainder of the thesis.
 
-\indent After reviewing the preliminary research, this paper will move forward to a more targeted effort in obtaining and analyzing data to develop a machine learning model. Chapter 2 will describe the process of obtaining the selected data, and Chapter 3 will discuss the methodology of developing the model.
+\indent After reviewing the preliminary research, this paper will move forward to a more targeted effort in obtaining and analyzing data to develop a machine learning model that can be used to predict ice thickness from said remote sensing methods. Chapter 2 will describe the process of obtaining the selected data, and Chapter 3 will discuss the methodology of developing the model.
 \par
 
 \section{Preliminary Research}
-Preliminary research into the availability of ice thickness data yields two notable organizations which may act as sources of data. These two organizations are the National Snow and Ice Data Center (NSIDC), and the National Aeronautics and Space Administration (NASA). Although both organizations offer large amounts of data, they differ in approach. The NSIDC acts as a historic repository, accumulating previous studies into a single location for easy access. NASA offers a similar service, but additionally allows researchers the opportuntity to query information from any of their active orbiting satellites.
-/// Add the European Space Agency as another portal - as this will be discussed in preliminary exploration. If not, it will surely need to be discussed somewhere, including the process of retrieving it, because it's the data set we're using for the model.  ////
+Preliminary research into the availability of ice thickness data yields three notable organizations which may act as sources of data. These three organizations are the National Snow and Ice Data Center (NSIDC), the National Aeronautics and Space Administration (NASA), and the European Space Agency (ESA). Although all organizations offer large amounts of data, they differ in approach. The NSIDC acts as a historic repository, accumulating previous studies into a single location for easy access. NASA offers a similar service, but additionally allows researchers the opportunity to query information from any of their active orbiting satellites. The ESA, like NASA, offers near real-time satellite data but also offers to sponsor data from external companies with the completion of a project proposal.
+
+\subsection*{NSIDC}
+Here is where the NSIDC links and data retrieval should be discussed. Limitations of the data or other notes about it's composition should be included according to the details in the abstract saved on file. Preliminary exploration will be where the figures will be uploaded (Or maybe we show one figure showing all of the points, and the exploration will be for the single instance?)
+
+\subsection*{ESA}
+Here is where you discuss the ESA's copernicus portal, finding the ICEYE company, looking through the proposal process, seeing superior SAR resolution from this private company than NASA's sentinel-2
 
 \subsection*{NASA}
 Here is where you should include sources to the ATL10 Data Specification pdf, and the associated CryoSat data specs. It should also be included where these links came from. It also should be included where, if applicable, specific data downloads were from. It should include the process of querying for data, which portals are made accessible, and how flexible they are. Do not forget to mention that they made an IceSat-2 mobile application for iOS.
@@ -17,15 +22,28 @@ Here is where you should include sources to the ATL10 Data Specification pdf, an
 Include how NASA's Sentinel-2 delivers SAR imaging, but at 50m resolution. This is a modality that can be used for a CNN but the resolution is not meaningfully compatible with any source of ground truth we have. Thus, searching for alternatives led to the European Space Agency and its sponsorship for ICEYE's 1m resolution imaging.
 
 Somewhere you should discuss IceSat-2 and its laser altimetry. ESPECIALLY that it's 17m footprint offers precision at a given location, 
-\subsection*{NSIDC}
-Here is where the NSIDC links and data retrieval should be discussed. Limitations of the data or other notes about it's composition should be included according to the details in the abstract saved on file. Preliminary exploration will be where the figures will be uploaded (Or maybe we show one figure showing all of the points, and the exploration will be for the single instance?)
 
 \section {Preliminary Exploration}
-Data of interest were the IceSat-2 ATL10 product and the NSIDC In-situ Dataset, selected for their combination of breadth and accuracy. Furthermore, the European Space Agency's requirements for sponsored data need to be explored to pursue the higher resolution SAR imagery hoped for. The in-situ measurements will provide an invaluable source of ground truth while the ATL10 product will drastically expand the flexibility and accessibility of sea ice freeboard data moving forward.
+After researching the available data sources across these 3 agencies, the NSIDC's In-Situ dataset offered the greatest possibility of learning direct trends of sea ice. However, NASA's IceSat-2's predictable orbit combined with the possibility of obtaining ICEYE's high resolution SAR imaging, suggested that a temporally and spatially coincident dataset could be obtained. This intersection of remote sensed imagery with precise remotely sensed freeboard measurements, is conducive for a convolutional neural network applying IceSat-2's accuracy onto the expansiveness of SAR imaging. This model would be more dynamic in nature than the static accumulation of In-situ data, and would give more insight into the changing state of sea-ice.
 
-\subsection*{NASA}
-A single delivery of IceSat-2's ATL10 data product yields a '.h5' file, incompatible with traditional spreadsheets. To access IceSat-2 data in a meaningful way involved developing a script to extract relevant information according to the types enumerated in the data product specification. Columns of interest include the latitude, longitude, time, and calculated freeboard height for each of the three beam pairs.
-// Consider adding perl and dynamically adding sample rows from the extracted .h5 file. This will give the reader context as to what's being gathered /
+Importantly, it's important to recognize that laser altimetry is purely restricted to measuring Earth's surface - meaning the returned measurements are innately incapable of measuring sea-ice thickness, especially in the presence of snow on the surface. (Add source and put it in bibliography)
+\begin{figure}[htb]
+	\centering
+	\subfigure{\includegraphics[width=.8\textwidth]{../research-resources/ice-sat-2/hydro-static-equillibrium.png}} 
+	\caption{Laser Altimetry on a buoyant surface (taken from NASA) }
+	\label{fig:hydro-static-diagram}
+\end{figure}
+
+NASA's ICESat-2 L4 Along-Track Sea Ice Thickness highlights this problem, and addresses it using the assumption of hydro-static equilibrium. This equation, expressed as follows, uses the densities of water, sea-ice and snow, alongside the height of the snow to calculate the correlated thickness of the sea ice.
+
+\begin{equation*}
+	\rho_i
+	\rho_w
+	\rho_s
+\end{equation*}
+
+% Data of interest were the IceSat-2 ATL10 product and the NSIDC In-situ Dataset, selected for their combination of breadth and accuracy. Furthermore, the European Space Agency's requirements for sponsored data need to be explored to pursue the higher resolution SAR imagery hoped for. The in-situ measurements will provide an invaluable source of ground truth while the ATL10 product will drastically expand the flexibility and accessibility of sea ice freeboard data moving forward.
+
 \subsection*{NSIDC}
 \paragraph*{}
 The "On-Ice Arctic Sea Ice Thickness Measurements by Auger, Core, and Electromagnetic Induction, from the Late 1800s Onward, Version 2" contains 69,750 rows of data, spanning 5 categorized regions; the Arctic Ocean, the Beaufort Sea, Greenland Coast, Prudhoe Bay, and Russian Coast. Filtering down to the Beaufort Sea region, a region of interest, yields 23 separate studies ranging between 1958 and 2016.
@@ -60,3 +78,11 @@ After accepting the validity of the electromagnetically sensed data, the points 
 	\caption{In-Situ Ice Thickness Distribution}
 	\label{fig:p-test-aug}
 \end{figure}
+
+\subsection*{NASA}
+A single delivery of IceSat-2's ATL10 data product yields a '.h5' file, incompatible with traditional spreadsheets. To access IceSat-2 data in a meaningful way involved developing a script to extract relevant information according to the types enumerated in the data product specification. Columns of interest include the latitude, longitude, time, and calculated freeboard height for each of the three beam pairs.
+// Consider adding perl and dynamically adding sample rows from the extracted .h5 file. This will give the reader context as to what's being gathered /
+
+
+\subsection*{ESA}
+Filling out the proposal for ICEYE sponsored data. (eg: See Appendix A or something)
