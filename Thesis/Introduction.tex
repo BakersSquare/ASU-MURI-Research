@@ -17,20 +17,20 @@ Here is where the NSIDC links and data retrieval should be discussed. Limitation
 Here is where you discuss the ESA's copernicus portal, finding the ICEYE company, looking through the proposal process, seeing superior SAR resolution from this private company than NASA's sentinel-2
 
 \subsection*{NASA}
-Here is where you should include sources to the ATL10 Data Specification pdf, and the associated CryoSat data specs. It should also be included where these links came from. It also should be included where, if applicable, specific data downloads were from. It should include the process of querying for data, which portals are made accessible, and how flexible they are. Do not forget to mention that they made an IceSat-2 mobile application for iOS.
+Here is where you should include sources to the ATL10 Data Specification pdf, and the associated CryoSat data specs. It should also be included where these links came from. It also should be included where, if applicable, specific data downloads were from. It should include the process of querying for data, which portals are made accessible, and how flexible they are. Do not forget to mention that they made an IceSat-2 mobile application for iOS. \cite{ICESat-2-ATL10-Product}
 
 Include how NASA's Sentinel-2 delivers SAR imaging, but at 50m resolution. This is a modality that can be used for a CNN but the resolution is not meaningfully compatible with any source of ground truth we have. Thus, searching for alternatives led to the European Space Agency and its sponsorship for ICEYE's 1m resolution imaging.
 
 Somewhere you should discuss IceSat-2 and its laser altimetry. ESPECIALLY that it's 17m footprint offers precision at a given location, 
 
 \section {Preliminary Exploration}
-After researching the available data sources across these 3 agencies, the NSIDC's In-Situ dataset offered the greatest possibility of learning direct trends of sea ice. However, NASA's IceSat-2's predictable orbit combined with the possibility of obtaining ICEYE's high resolution SAR imaging, suggested that a temporally and spatially coincident dataset could be obtained. This intersection of remote sensed imagery with precise remotely sensed freeboard measurements, is conducive for a convolutional neural network applying IceSat-2's accuracy onto the expansiveness of SAR imaging. This model would be more dynamic in nature than the static accumulation of In-situ data, and would give more insight into the changing state of sea-ice.
+After researching the available data sources across these 3 agencies, the NSIDC's In-Situ dataset offered the greatest possibility of learning direct trends of sea ice. However, NASA's IceSat-2's predictable orbit combined with the possibility of obtaining ICEYE's high resolution SAR imaging, suggested that a temporally and spatially coincident dataset could be obtained. This intersection of remote sensed imagery with precise remotely sensed freeboard measurements, is conducive for a convolutional neural network applying IceSat-2's accuracy onto the expansiveness of SAR imaging. This model would be more dynamic in nature than the static accumulation of In-situ data, and would give more insight into the changing state of sea-ice. \cite{In-Situ-Dataset}
 
 Importantly, it's important to recognize that laser altimetry is purely restricted to measuring Earth's surface - meaning the returned measurements are innately incapable of measuring sea-ice thickness, especially in the presence of snow on the surface. (Add source and put it in bibliography)
 \begin{figure}[htb]
 	\centering
 	\subfigure{\includegraphics[width=.8\textwidth]{../research-resources/ice-sat-2/hydro-static-equillibrium.png}} 
-	\caption{Laser Altimetry on a buoyant surface (taken from NASA) }
+	\caption{Laser Altimetry on a buoyant surface} \cite{ICESat-2-L4-Product}
 	\label{fig:hydro-static-diagram}
 \end{figure}
 

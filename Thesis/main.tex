@@ -1,6 +1,7 @@
 \documentclass[11pt, a4paper, oneside]{book}
 \usepackage[utf8]{inputenc}
-\usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage[backend=bibtex, style=ieee]{biblatex}
+\bibliography{references} %Imports bibliography file
 % Packages validated to be needed
 \usepackage{graphicx}       % for minipage
 \usepackage{amsmath}        % for align*
@@ -10,7 +11,6 @@
 \usepackage{setspace}       % Used for double spacing
 \usepackage{subfigure}      % For figure placement
 %
-\addbibresource{references.bib} %Imports bibliography file
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries}{}{0pt}{\Huge}        % For removing 'chapter N' from titlesec
 \titlespacing*{\chapter} {0pt}{0pt}{40pt}      % For removing 'chapter N' from titlesec
 \doublespacing          % double spacing from setspace
@@ -86,11 +86,7 @@
 %Figures, tables and references
     \cleardoublepage
     \listoffigures
-    \listoftables
-
-%\bibliographystyle{acm}
-%    \bibliography{references}
-  \printbibliography      
+    \printbibliography
   
 %appendices    
 
