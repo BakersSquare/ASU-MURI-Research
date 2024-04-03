@@ -2,9 +2,19 @@
 \label{sec:Introduction}
 
 \paragraph{}
-A distinct problem arising from attempting to study the exact state of sea ice is that there is limited data available. Data pertaining to sea ice is widely distributed, not correlated, or limited in scope such that it's difficult to draw inferences from. Naturally, the immediate approach to this thesis will first require research into available data sources before conducting any exploration. This exploration will reveal which sources should be targeted for the remainder of the thesis.
+Why is sea ice important, and what are the applications of understanding it at a closer scale?
 
-\indent After reviewing the preliminary research, this paper will move forward to a more targeted effort in obtaining and analyzing data to develop a machine learning model that can be used to predict ice thickness from said remote sensing methods. Chapter 2 will describe the process of obtaining the selected data, and Chapter 3 will discuss the methodology of developing the model.
+Background of how sea-ice currently measured: In-situ, LiDar, SAR. Discuss the advantages that SAR and LiDar have over In-situ measurements (e.g. availability), but how they are innately less confident in their accuracies.
+
+Discuss the prevalent sources of data as it stands - NSIDC as a data repository, NASA's Sentinel(1/2), IceSat-2, CryoSat satellites as periodic sources of data. Transition into how despite how available these different mediums are, they are subject to inaccuracies from assumptions. In particular, without a direct auger core to measure ice-thickness it's common practice to infer thickness by the assumption of iso-static equilibrium (e.g. Assuming the ice body is floating, then deducing the mass and densities of the substances involved to achieve that state). This approach, while intuitive, is dependent on unknown mass, and variable density. Densities vary between the snow, sea water, and sea ice depending on factors like salinity, temperature, and age, all of which are precisely unknown at local scales both temporally and geographically.
+
+\indent Attempts have been made to improve this estimation [citing the IceSat-2 : CryoSat study, the In-Situ analysis], but the efforts have been consistently inconclusive at best. Ball-park estimations for sea-ice density currently range from foo to bar but is disputed to practically be even lower.
+
+Transition into how SAR imaging can capture a return that indicates sea ice thickness, but it's low resolution from Sentinel-2 prevents it from being local in context. The intuition behind the remainder of the thesis is to coincide precise IceSat-2 LiDAR and data derivatives with widespread SAR imaging, to determine whether sea-ice thickness can be a learnable property from SAR image returns.
+
+The problems with this include the availability of applicable data (such as high-resolution SAR, as the precision of IceSat-2 is immediately lost with low-resolution imagery) and also the coincidence of these two modalities, both spatially and temporally.
+
+% \indent After reviewing the preliminary research, this paper will move forward to a more targeted effort in obtaining and analyzing data to develop a machine learning model that can be used to predict ice thickness from said remote sensing methods. Chapter 2 will describe the process of obtaining the selected data, and Chapter 3 will discuss the methodology of developing the model.
 \par
 
 \section{Preliminary Research}
