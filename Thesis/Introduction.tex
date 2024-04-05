@@ -4,11 +4,24 @@
 \paragraph{}
 -Why is sea ice important, and what are the applications of understanding it at a closer scale?-
 
-\indent In recent decades, understanding the state of sea ice has grown more important. Sea ice analysis at large scales can provide valuable insight into the trajectory of climate change and at local scale has implications in fields like arctic navigation. Understanding sea-ice thickness in particular, is important for both of these applications  In particular, the thickness of the ice can be analyzed over time to track ice mass in relation to global warning or interpreted locally to predict shipping speed through ice-covered water. \cite{sea-ice-properties}
+\indent In recent decades, understanding the state of sea ice has grown increasingly more important. Sea ice analysis at large scales can provide valuable insight into the trajectory of climate change and at local scale has implications in fields like arctic navigation. Understanding sea-ice thickness in particular, is important for both of these applications.  For example, the thickness of the ice can be analyzed over time to track ice mass in relation to global warning or interpreted locally to predict shipping speed through ice-covered water. \cite{sea-ice-properties}
 
 -How is sea ice currently captured?- 
 
-\indent Current methods of sea ice modelling rely heavily on remote sensing methods. In-Situ measurements 
+\indent Due to the harsh nature of the arctic, in-situ studies of arctic ice are infrequent both in time and space. Thus, most analyses depend heavily on remote sensing methods. These methods cumulatively provide magnitudes more data than in-situ measurements can achieve, but differ in modality, methodology and resolution. Synthetic Aperture Radar (SAR) and light detection and ranging (LiDAR) are some such modalities that survey the arctic region. Furthermore, organizations like the the National Aeronautics and Space Administration (NASA) and European Space Agency (ESA) freely provide this information through their constellation of satellites.
+
+% Crop the image to better fit the page. Also include an image that contrasts this availability with the availability of any other remote sensed method.
+\begin{figure}[htb]
+	\centering
+	\subfigure{\includegraphics[width=0.8\textwidth]{../research-resources/in-situ/Plotted-Tracks.png}} 
+	\caption{In-Situ Data Availability}
+	\label{fig:foobar}
+\end{figure}
+
+Each of these remote sensing methods have their individual strengths and limitations.
+ ICESat\-2 (IS\-2), a NASA LiDAR satellite, works by emitting individual photons and timing their returns.
+  Praised for its precision, its readings are statistically corrected to adjust for ambient light, cloud occlusion (atmospheric scattering), snow and ice scattering, and the physical problem of first-photon bias \cite{ICESat-2-ATL10-Product}.
+	 IS\-2's statistical robustness offers valuable local observation with less than 5 m total geolocation error (mean \(+ 1\sigma\))\cite{ICESat-2-Horizontal-Accuracy}
 
 Background of how sea-ice currently measured: In-situ, LiDar, SAR. Discuss the advantages that SAR and LiDar have over In-situ measurements (e.g. availability), but how they are innately less confident in their accuracies.
 
@@ -52,13 +65,6 @@ NASA's ICESat-2 L4 Along-Track Sea Ice Thickness highlights this problem, and ad
 The "On-Ice Arctic Sea Ice Thickness Measurements by Auger, Core, and Electromagnetic Induction, from the Late 1800s Onward, Version 2" contains 69,750 rows of data, spanning 5 categorized regions; the Arctic Ocean, the Beaufort Sea, Greenland Coast, Prudhoe Bay, and Russian Coast. Filtering down to the Beaufort Sea region, a region of interest, yields 23 separate studies ranging between 1958 and 2016.
 \par
 %%% Modify which figures you're showing and in what order. It's not apparent what direction you're trying to go from here if you leave all 3 together like this.
-\begin{figure}[htb]
-	\centering
-	\subfigure{\includegraphics[width=0.8\textwidth]{../research-resources/in-situ/Plotted-Tracks.png}} 
-	\subfigure{\includegraphics[width=0.5\textwidth]{../research-resources/in-situ/region-of-interest.png}} 
-	\caption{In-Situ Data Availability}
-	\label{fig:foobar}
-\end{figure}
 
 
 A single delivery of IceSat-2's ATL10 data product yields a '.h5' file, incompatible with traditional spreadsheets. To access IceSat-2 data in a meaningful way involved developing a script to extract relevant information according to the types enumerated in the data product specification. Columns of interest include the latitude, longitude, time, and calculated freeboard height for each of the three beam pairs.
