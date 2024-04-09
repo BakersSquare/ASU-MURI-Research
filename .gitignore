@@ -23,7 +23,6 @@ personal-research/
 Thesis/*.*
 !Thesis/*.tex
 !Thesis/*.bib
-!Thesis/*.pdf
 
 # Distribution / packaging
 .Python
