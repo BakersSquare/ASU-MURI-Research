@@ -33,27 +33,33 @@ In contrast to IS-2's highly accurate and local measurements, SAR imaging offers
  \end{figure}
 
 
-\indent Given that ice thickness is not a property directly measured by LiDAR nor captured in SAR imagery, sets of assumptions need to be made to deduce the property through related measurements. A leading paradigm in modeling ice thickness is through the assumption of hydrostatic equilibrium \cite{ICESat-2-L4-Product} \cite{Hutchings_Heil_Lecomte_Stevens_Steer_Lieser_2015} \cite{Forsström_Gerland_Pedersen_2011}, in which the properties of the ice sheet are deduced based upon the fact that the ice is buoyant in sea water.
+ \indent Given that ice thickness is not a property directly measured by LiDAR nor captured in SAR imagery, sets of assumptions need to be made to deduce the property through related measurements. A leading paradigm in modeling ice thickness is through the assumption of hydrostatic equilibrium \cite{ICESat-2-L4-Product} \cite{Hutchings_Heil_Lecomte_Stevens_Steer_Lieser_2015} \cite{Forsström_Gerland_Pedersen_2011}, in which the properties of the ice sheet are deduced based upon the fact that the ice is buoyant in sea water (Figure 1.3). In this assumption, LiDAR measurements retrieve the elevations of the snow covered ice-surface in relation to the sea surface, and statistically infer the sea ice surface height. It's possible to relate the ice's total thickness to these elevation measurements by combining these relative heights with their associated substance densities (Equation 1.1). NASA's IS-2 L4 Along-Track Sea Ice Thickness product is a closely related example of this topic, and produced arctic ice thickness results between October 2018 and May 2022 \cite{ICESat-2-L4-Product}.
+ \begin{equation}
+ 	\label{eq:isostatic-equilibrium}
+ 	\displaystyle h_i=\frac{\displaystyle h_f\rho_w}{(\rho_w-\rho_i)}+\frac{\displaystyle h_s(\rho_s-\rho_w)}{(\rho_w-\rho_i)}
+ \end{equation}
+ where:
+\begin{conditions}
+	\displaystyle h_i    &  Sea ice thickness \\
+	\displaystyle h_f    &  Freeboard height \\   
+	\displaystyle h_s     &  Snow depth (m) \\   
+	\rho_w 							&  Density of water \\
+	\rho_i 							&  Density of sea ice \\
+	\rho_s 							&  Density of snow \\
+\end{conditions}
+% \indent There are critiques with the established hydrostatic model. Ice density at a local scale is a variable property - it's dependent on factors like salinity, temperature, air volume and exposure \cite{sea-ice-properties}, and has a large enough observable difference that ice can be reliably classified into first and multi-year ice by SAR imaging alone \cite{SAR-U-Net}. Given the variability, the exact local density of sea ice in the remote arctic is ephemeral, but generally agreed upon to be between 900-940 kg/m^3, with some researchers proposing a slightly wider range of 892-945 \cite{sea-ice-properties}. IS-2's L4 product settled to use a value of 916 kg/m^3 for ice above and below the waterline.
 
-The equation for isostatic equillibrium is given as: 
 
-
-\begin{equation*}
-	\rho_i
-	(\rho_w / (\rho_w-	\rho_i)) + (\rho_s-\rho_w)/(\rho_s - \rho_w)/\
-	
-	\rho_s
-\end{equation*}
-
-Discuss the prevalent sources of data as it stands - NSIDC as a data repository, NASA's Sentinel(1/2), IceSat-2, CryoSat satellites as periodic sources of data. Also give an overview as to how each medium works. This might need to span multiple paragraphs.
-
-Importantly, it's important to recognize that laser altimetry is purely restricted to measuring Earth's surface - meaning the returned measurements are innately incapable of measuring sea-ice thickness, especially in the presence of snow on the surface. (Add source and put it in bibliography)
 \begin{figure}[htb]
 	\centering
 	\subfigure{\includegraphics[width=.8\textwidth]{../research-resources/ice-sat-2/hydro-static-equillibrium.png}} 
 	\caption{Ice Thickness Isostatic Assumption} \cite{ICESat-2-L4-Product}
 	\label{fig:hydro-static-diagram}
 \end{figure}
+
+Discuss the prevalent sources of data as it stands - NSIDC as a data repository, NASA's Sentinel(1/2), IceSat-2, CryoSat satellites as periodic sources of data. Also give an overview as to how each medium works. This might need to span multiple paragraphs.
+
+Importantly, it's important to recognize that laser altimetry is purely restricted to measuring Earth's surface - meaning the returned measurements are innately incapable of measuring sea-ice thickness, especially in the presence of snow on the surface. (Add source and put it in bibliography)
 
 -Acknowledge that even with the best of the remote sensing methods, many extrapolations of ice-thickness rely on the same fundamental assumption (cite the source that mentioned this)-
 Discuss isostatic equilibrium and how the physics of it requires density constants which aren't known or measured, and that density itself is dependent on factors like salinity, temperature, and age, all of which are unknown at local temporal and geographic scale. Current research attempts to quantify density have yielded a somewhat consistent range of values between **foo** and **bar**, but even this range has been disputed to be inaccurate [citing the IceSat-2 \& CryoSat study, the In-Situ analysis]. (Consider attaching the limitation of distance to the reference surface here, or include it in the limitations).
