@@ -1,0 +1,14 @@
+-----track-graphs-p-test---------------
+Normalized Standard Deviation:  0.1409347955269019
+Normalized Test p-value = 3.56337e-34
+The null hypothesis can be rejected
+
+------auger-vs-em-thickness------------
+EM Thickness Readings are easier to take than measurements from an Auger.
+This dataset contains 469 manual readings, and 21539 EM readings.
+Thus, we want to examine how much we can trust those measurements by exploring the relationship between them.
+
+y = 0.92x + 0.18
+Adjusted R^2 Value: 0.8659843457694136
+P Value: 2.313840006273919e-202
+The adjusted R^2 Value and low P value demonstrate there is a high correlation between these variables, and our model captures a significant portion of the variance.
