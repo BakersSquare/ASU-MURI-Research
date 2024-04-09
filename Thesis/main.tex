@@ -48,8 +48,6 @@
 \def\honorsCollege{Barrett, The Honors College}
 \def\collegeOfMajor{Ira A. Fulton Schools of Engineering}
 \def\schoolOfMajor{School of Computing and Augmented Intelligence}
-
-
 \def\author{John Baker}
 \def\director{Dr.~Douglas Cochran}
 \def\secondReader{Dr.~Hua Wei}
@@ -61,6 +59,10 @@
 \def\location{Duisburg}
 \def\date{Month, Year}
 \setlength\parindent{24pt}
+
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
 
 
 \begin{document}
