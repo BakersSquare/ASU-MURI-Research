@@ -1,35 +1,39 @@
 \chapter{Data Collection}
 \label{sec:Data_Collection}
 
-The data collection portion of this project is immediately tasked with the following set of problems: spatial coincidence, temporal coincidence, and resolution. Given the asynchronous orbits of each satellite and the incompatible resolutions of ESA's SN-2 and NASA's IS-2, other avenues were explored to obtain precise SAR imaging. Of note were NASA's "ICESAT-2" mobile application and ICEYE's\textsuperscript{\tiny\textcopyright} SAR imaging offered through the ESA.
+The data collection portion of this project is immediately tasked with the following set of problems: spatial coincidence, temporal coincidence, and resolution. Given the asynchronous orbits of each satellite and the incompatible resolutions of ESA's SN-2 and NASA's IS-2, other avenues were explored to obtain precise SAR imaging. Of note were NASA's "ICESAT-2" mobile application and ICEYE's\textsuperscript{\tiny\textcopyright} SAR imaging offered through the ESA. The ICESAT-2 mobile application tracks IS-2's footprint location and lists the dates and times of the next times the satellite will fly over a position. ICEYE is a third party satellite provider through the ESA that offers "SPOT" and "SLEA" SAR imaging products, featuring 1m resolution and extent ranging from 1km$^2$ to 15km$^2$ \cite{iceye-products}. The appeal of ICEYE's 1m resolution products is that a nominal acquisition of its SPOT data product would coincide with $\approx$350 unique IS-2 footprints while the SLEA product would coincide with $\approx$5300.
 
 \section {SAR Imaging}
-The resolution incompatibility between SAR and LiDAR instruments could not be resolved by the data made freely available by the ESA or NASA. However, the ESA offers to sponsor data from third party companies through their Earth Observation User Services Portal. Companies like ICEYE, which offer SAR data products at up to .01m resolution, provide SAR imagery that is significantly more compatible with IS-2's small footprint in comparison to the free alternatives.
+ICEYE's superior resolution is significantly more compatible with IS-2's small footprint, but is not made freely available as it's a private company. However, they are a participant in the ESA's Third Party Missions Program, meaning the ESA can sponsor the data delivery through their Earth Observation User Services Portal. 
 
-To achieve ESA sponsorship of this data, a proposal was submitted including the objective of the project, researchers involved in the task, which satellite and product was being requested, and a general plan outlining the use of the sponsored data. Given the latency of proposal approval, and the seasonal characteristics of arctic sea ice, alternate efforts to coincide freely available SN-2 10m resolution data with IS-2's altimetry.
+To achieve ESA sponsorship of this data, a proposal was submitted including the objective of the project, researchers involved in the task, which satellite and product was being requested, and a general plan outlining the use of the sponsored data. Given the latency of proposal approval, and the seasonal characteristics of arctic sea ice, interim efforts were made to coincide freely available SN-2 10m resolution data with IS-2's altimetry.
 
-Referring to ESA's Copernicus Open Access Hub and NASA's Earthdata Search tool, a near coincident set of SN-2 and IS-2 data was obtained for February 20-21 of 2023 (Figure 2.1). The SAR imaging clearly captured regions of arctic ice, and did so on February 20th at 4:50pm local time. The predominantly spatially coincident IS-2 measurements, being the long purple and orange tracks in the figure, crossed the region at 10am and 10pm local time on February 21. This data while immensely geographically coincident, was doubtful given its 17 and 29 hour respective temporal delay. Utility scripts were devised to track buoy movement in the area across the time period, and the nearest buoy (purple) to any of the tracks was 30 kilometers away and had traveled another 8 km during the data's time difference. The corroboration of buoy data invalidates the possibility of validity of the data, as it's unreasonable to account for the drift of the ice over the given time and space scale. While unsuccessful, this instance demonstrates the inavailability of naturally coincident data and the ineffeciencies involved in obtaining it.
-
-\begin{figure}
+\begin{figure}[h]
     \centering
 	\includegraphics[width=.8\textwidth]{../research-resources/ice-sat-2/near-coincidence-buoys.png}
-    \label{near-coincidence}%
+    \label{near-coincidence}
+    \caption{Near-Coincidence of SN-2 and IS-2, February 20-21 2023}
 \end{figure}
 
+Referring to ESA's Copernicus Open Access Hub and NASA's Earthdata Search tool, a near coincident set of SN-2 and IS-2 data was obtained for February 20-21 of 2023 (Figure 2.1). The SAR imaging clearly captured regions of arctic ice, and did so on February 20th at 4:50pm local time. The predominantly spatially coincident IS-2 measurements, being the long purple and orange tracks in the figure, crossed the region at 10am and 10pm local time on February 21. This data while immensely geographically coincident, was dubious because of its 17 and 29 hour respective temporal delay. Utility scripts were devised to track buoy movement in the area across the time period, and the nearest buoy (purple) to any of the tracks was 30 kilometers away and had traveled another 8 km during the data's time difference. The corroboration of buoy movement in the area invalidates the possibility of the data being correlated, as it's unreasonable to account for the drift of the ice over the given time and space scale. While unsuccessful, this instance demonstrates the unavailability of naturally coincident data and the inefficiencies in obtaining it.
 
+Later, ESA approved the project proposal for the sponsoring of 2 SPOT and 2 SLEA images. With sponsorship, specific SAR imagery was then ordered that coincided with IS-2's flight path. In preparation for the data order, locations were selected in the ICESAT-2 mobile application and validated to have sea ice by viewing recent SN-2 data via Copernicus Open Access Hub. Then, an order form was submitted to ICEYE detailing the acquisition information to which they'd respond regarding its feasibility. This ordering and validation was repeated until all 4 sponsored images were fulfilled (Figure 2.2).
 
-\begin{figure}
+\begin{figure}[h!]
     \centering
     \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X2_QUICKLOOK_SLEA_3279211_20240119T044029.png}}
+    \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X13_QUICKLOOK_SLEA_3279210_20240119T023534.png}}
     \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X6_QUICKLOOK_SLH_3280232_20240120T132858.png}}
     \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X8_QUICKLOOK_SLH_3295462_20240120T202547.png}}
-    \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X13_QUICKLOOK_SLEA_3279210_20240119T023534.png}}
     \caption{(a), (b), (c), (d)}
-    \label{gathered-sar}%
+    \label{gathered-sar}
+
 \end{figure}
 
 \section {Laser Altimetry (IceSat-2)}
+Given the ICESAT-2 mobile application and ICEYE's flexibility handled the issues of spatial and temporal coincidence, IS-2 data was simply collected from the National Snow and Ice Data Center (NSIDC) repository after acquisition. Each IS-2 acquisiiton offers multiple data products, but for the study of sea ice the ATL10 product is most relevant. The ATL10 data product contains inferences about sea-ice freeboard using data propagated through from their ATL07 sea ice height product. Thus, a single ATL10 delivery contains the interpreted sea surface height, ice surface height, and the total freeboard \cite{ICESat-2-ATL10-Product} needed to sea ice thickness (Equation 1.1).
 
+The recorded data is captured and delivered in a ".h5" file requiring parsing to extract 
 
 
 \begin{figure}[]
