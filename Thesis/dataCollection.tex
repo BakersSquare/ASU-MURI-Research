@@ -12,39 +12,42 @@ To achieve ESA sponsorship of this data, a proposal was submitted including the 
     \centering
 	\includegraphics[width=.8\textwidth]{../research-resources/ice-sat-2/near-coincidence-buoys.png}
     \label{near-coincidence}
-    \caption{Near-Coincidence of SN-2 and IS-2, February 20-21 2023}
+    \caption[Existing Coincident Data Unavailability]{Near-Coincidence of SN-2 and IS-2, February 20-21 2023}
 \end{figure}
 
-Referring to ESA's Copernicus Open Access Hub and NASA's Earthdata Search tool, a near coincident set of SN-2 and IS-2 data was obtained for February 20-21 of 2023 (Figure 2.1). The SAR imaging clearly captured regions of arctic ice, and did so on February 20th at 4:50pm local time. The predominantly spatially coincident IS-2 measurements, being the long purple and orange tracks in the figure, crossed the region at 10am and 10pm local time on February 21. This data while immensely geographically coincident, was dubious because of its 17 and 29 hour respective temporal delay. Utility scripts were devised to track buoy movement in the area across the time period, and the nearest buoy (purple) to any of the tracks was 30 kilometers away and had traveled another 8 km during the data's time difference. The corroboration of buoy movement in the area invalidates the possibility of the data being correlated, as it's unreasonable to account for the drift of the ice over the given time and space scale. While unsuccessful, this instance demonstrates the unavailability of naturally coincident data and the inefficiencies in obtaining it.
+Referring to ESA's Copernicus Open Access Hub and NASA's Earthdata Search tool, a near coincident set of SN-2 and IS-2 data was obtained for February 20-21 of 2023 (Figure 2.1). The SAR imaging clearly captured regions of arctic ice, and did so on February 20th at 4:50pm UTC. The predominantly spatially coincident IS-2 measurements, being the long purple and orange tracks in the figure, crossed the region at 10am and 10pm UTC on February 21. This data while immensely geographically coincident, was dubious because of its 17 and 29 hour respective temporal delay. Utility scripts were devised to track buoy movement in the area across the time period, and the nearest buoy (purple) to any of the tracks was 30 kilometers away and had traveled another 8 km during the data's time difference. The corroboration of buoy movement in the area invalidates the possibility of the data being correlated, as it's unreasonable to account for the drift of the ice over the given time and space scale. While unsuccessful, this instance demonstrates the unavailability of naturally coincident data and the inefficiencies in obtaining it.
 
 Later, ESA approved the project proposal for the sponsoring of 2 SPOT and 2 SLEA images. With sponsorship, specific SAR imagery was then ordered that coincided with IS-2's flight path. In preparation for the data order, locations were selected in the ICESAT-2 mobile application and validated to have sea ice by viewing recent SN-2 data via Copernicus Open Access Hub. Then, an order form was submitted to ICEYE detailing the acquisition information to which they'd respond regarding its feasibility. This ordering and validation was repeated until all 4 sponsored images were fulfilled (Figure 2.2).
 
 \begin{figure}[h!]
     \centering
-    \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X2_QUICKLOOK_SLEA_3279211_20240119T044029.png}}
     \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X13_QUICKLOOK_SLEA_3279210_20240119T023534.png}}
+    \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X2_QUICKLOOK_SLEA_3279211_20240119T044029.png}}
     \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X6_QUICKLOOK_SLH_3280232_20240120T132858.png}}
     \subfigure[]{\includegraphics[width=.48\linewidth]{./research-resources/SAR/ICEYE_X8_QUICKLOOK_SLH_3295462_20240120T202547.png}}
-    \caption{(a), (b), (c), (d)}
+    \caption[ICEYE Captured SAR Imagery]{
+    \\\hspace{\textwidth}
+    (a) SLEA 1/19 02:35:35 UTC (73.396, -141.668)\\\hspace{\textwidth}
+     (b) SLEA 1/19 04:40:35 UTC (73.395, -141.664),\\\hspace{\textwidth}
+      (c) SPOT 1/20 13:29:02 UTC (72.816,-133.975),\\\hspace{\textwidth}
+      (d) SPOT 1/20 20:25:52 UTC (72.816, -133.976)
+      }
     \label{gathered-sar}
 
 \end{figure}
 
 \section {Laser Altimetry (IceSat-2)}
-Given the ICESAT-2 mobile application and ICEYE's flexibility handled the issues of spatial and temporal coincidence, IS-2 data was simply collected from the National Snow and Ice Data Center (NSIDC) repository after acquisition. Each IS-2 acquisiiton offers multiple data products, but for the study of sea ice the ATL10 product is most relevant. The ATL10 data product contains inferences about sea-ice freeboard using data propagated through from their ATL07 sea ice height product. Thus, a single ATL10 delivery contains the interpreted sea surface height, ice surface height, and the total freeboard \cite{ICESat-2-ATL10-Product} needed to sea ice thickness (Equation 1.1).
+The ICESAT-2 mobile application and ICEYE's flexibility handled the issues of spatial and temporal coincidence. IS-2 data was simply collected from the National Snow and Ice Data Center (NSIDC) repository after its own acquisition of the selected area. Each IS-2 acquisiiton offers multiple data products, but for the study of sea ice the ATL10 product is most relevant. The ATL10 data product contains inferences about sea-ice freeboard using data propagated through from their ATL07 sea ice height product. Thus, a single ATL10 delivery contains the interpreted sea surface height, ice surface height, and the total freeboard \cite{ICESat-2-ATL10-Product} needed to infer sea ice thickness (Equation 1.1).
 
-The recorded data is captured and delivered in a ".h5" file requiring parsing to extract 
+The recorded data is captured and delivered in a ".h5" file requiring parsing to extract relevant information. Appendix \ref{appendix:A} contains a list of the fields that were extracted, and a brief description of each interpreted from the ATL10 data product specification \cite*{ICESat-2-ATL10-Product}.
+% \sectionbreak[***]
 
+After retrieving the SAR imaging from ICEYE and the IS-2 data from the NSIDC, the best delivery was Figure 2.2b. Figure 2.2b was 6 minutes coincident with the IS-2 track, thus offering the greatest source of ground truth. A severe limitation of the extracted data though, is IS-2's omission of data when it detects ice concentration $<$50\%. For this reason, the ATL10 .h5 product for this acquisition only contained data from its GT2R and GT3R beams, effectively yielding 33\% of the information initially expected. Figure 2.3 demonstrates the surface profile of the captured data, which can be used to interpolate ice thickness in future sections.
 
-\begin{figure}[]
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=.8\textwidth]{../research-resources/ice-sat-2/Surface Profiles.png}
-	\caption{Ice Thicknesses}
+	\includegraphics[width=\textwidth]{../research-resources/ice-sat-2/Surface Profiles.png}
+	\caption[Ice Surface Profile of Acquired Data]{Ice Surface Profile}
 	\label{fig:ice-thickness-gathered}
 \end{figure}
 
-------Default Text ----------
-
-Provide in brief the background information for your work/field keeping in mind that maybe your readers do not have experience with topics your reference or address in your thesis. 
-
-In the second part, provide a review of the state of the art relevant to your thesis. Here you present relevant research that relates to your work. 
