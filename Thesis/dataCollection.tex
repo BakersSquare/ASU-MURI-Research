@@ -44,10 +44,18 @@ The recorded data is captured and delivered in a ".h5" file requiring parsing to
 
 After retrieving the SAR imaging from ICEYE and the IS-2 data from the NSIDC, the best delivery was Figure 2.2b. Figure 2.2b was 6 minutes coincident with the IS-2 track, thus offering the greatest source of ground truth. A severe limitation of the extracted data though, is IS-2's omission of data when it detects ice concentration $<$50\%. For this reason, the ATL10 .h5 product for this acquisition only contained data from its GT2R and GT3R beams, effectively yielding 33\% of the information initially expected. Figure 2.3 demonstrates the surface profile of the captured data, which can be used to interpolate ice thickness in future sections.
 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{../research-resources/ice-sat-2/icesat2-tracks.png}
+	\caption[Overlayed LiDAR and SAR Readings]{IS-2 Tracks across ICEYE Image}
+	\label{fig:icesat2-tracks}
+\end{figure}
+
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{../research-resources/ice-sat-2/Surface Profiles.png}
-	\caption[Ice Surface Profile of Acquired Data]{Ice Surface Profile}
+	\caption[Ice Surface Profile of Acquired Data]{Ice Surface Profiles}
 	\label{fig:ice-thickness-gathered}
 \end{figure}
 
