@@ -2,13 +2,17 @@
 \label{sec:Discussion}
 
 In the Discussion section you should elaborate on the following points:
-\section{Research Questions}
-Here you will answer your research questions, as they appear in the introduction. Answer each question in a different section. Relate your answer to your results.
-Discuss if your findings support and align with related work or not. Explain why do you think this happens, especially if your findings contradict existing work.
-Discuss alternative interpretations of your findings.
 
-\section{Theoretical and Practical Implications}
-Here you should explain what is your contribution and how it promotes knowledge in the field both in terms of theory and practice.
-How do you envision your work to change or promote research in the area. How could it be used? How do you envision it to be used?
+\section{Limitations}
+While intuitive, the fundamental approach to this problem lies on a set of assumptions that may not always be true. At the root of the deduction of sea-ice thickness using IceSat-2 freeboard measurement is the assumption of hydro-static equilibrium at the measured footprint. The equation relies on the densities of snow, ice, and sea water, which are constants that may vary seasonally and geographically. Additionally, each footprint in this equation is assuming the absence of any other forces acting on the body. This thesis neither considered nor explored the dynamics of sea-ice floes, meaning that the calculated thickness at any given location may differ not only from error, but from a faulty equation derived from an incomplete physical understanding of the observed body. 
 
+- Luck of acquiring coincident data, even with project sponsorship
+  - Even the 6 minutes coincident. No buoys are close enough to validate, but it only takes 3 meters per minute of movement to remove the coincidence from ICESAT-2's track. No way to know for this case. E.G. that's an assumption we made for the experimentation
+- Band specific SAR imaging (X-Band from ICEYE is different from SN-2)
+- Variable ranges of ice density - not entirely sure what the right values are at any given moment in time
+- Hydrostatic assumption ignores other forces on the body from adjacent ice
 
+\section{Practical Implications}
+- Demo, does not need to be coded
+\section{Future Work}
+In the future, this topic can be further explored by examining different machine learning models and architectures that may be better suited on 2-channel, low-resolution imaging. To aid this, more data should be collected from both IceSat-2 and ICEYE.
