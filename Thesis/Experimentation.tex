@@ -1,7 +1,7 @@
 \chapter{Experimentation}
 \label{sec:Experimentation}
 
-The intuition behind developing a CNN on this dataset is novel. Many related works demonstrate the feasibility of using CNN models to classify or segment SAR imaging \cite{SAR-U-Net}, but tend not to explore regression tasks. This could be the result of the unavailability of a public dataset like the one derived for this study. Furthermore, attempting to relate IS-2 footprints to high resolution SAR imaging involves deriving information from single-channel imagery of low pixel dimension. Compounded with the 33$\%$ yield of anticipated data from the ICEYE image, the limited data problem is exacerbated. 
+The intuition behind developing a CNN on this dataset is novel. Many related works demonstrate the feasibility of using CNN models to classify or segment SAR imaging \cite{SAR-U-Net}, but tend not to explore regression tasks. This could be a result of minimal data like the set derived for this study being accessible to the public. Furthermore, attempting to relate IS-2 footprints to high resolution SAR imaging involves deriving information from single-channel imagery of low pixel dimension. Compounded with the 33$\%$ yield of anticipated data from the ICEYE image, the limited data problem is exacerbated. 
 
 \section{Setup}
 The coincident data is first extracted from the ICEYE imagery, yielding 4,683 17x17 tiles with associated LiDAR measurements. The selected densities used for interpolation are as follows, where the snow density is drawn from historical measurements during the month of January \cite{warren1999snow}.
