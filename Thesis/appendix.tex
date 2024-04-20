@@ -1,53 +1,57 @@
 % !TeX root = main.tex
   \chapter{Appendix A: ATL10 Product}\label{appendix:A}
-\begin{table}[htbp]
-  \begin{tabularx}{\textwidth} {|X|X|}
+\tiny
+  \begin{table}[htbp]
+   \begin{adjustwidth}{-4em}{-4em}
+   \centering
+  \begin{tabularx}{1.33\textwidth} {|l|X|l|}
    \hline
-   Field Name & Description \\ 
-\hhline{|=|=|}
-   /freeboard\_segment/latitude & ATL10 Data Product Columns \\ 
+   Field Name & Description & Units\\ 
+\hhline{|=|=|=|}
+   /freeboard\_segment/latitude & The beam footprint's ground latitude & \\ 
    \hline
-   /freeboard\_segment/longitude & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/longitude & The beam footprint's ground longitude & \\ 
    \hline
-   /freeboard\_segment/beam\_fb\_height & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/beam\_fb\_height & The beam footprint's freeboard height relative to the ice surface height (i.e. snow depth atop the ice surface) & m \\ 
    \hline
-   /freeboard\_segment/beam\_fb\_confidence & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/beam\_fb\_confidence & The confidence of the calculated freeboard height & [0-1]\\ 
    \hline
-   /freeboard\_segment/beam\_fb\_quality\_flag & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/beam\_fb\_quality\_flag & A flag describing the results of the freeboard estimate & [-1,1,2,3,4,5] \\ 
    \hline
-   /freeboard\_segment/beam\_fb\_unc & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/beam\_fb\_unc & The uncertainty of the calculated freeboard height & [0-1]\\ 
    \hline
-   /freeboard\_segment/beam\_refsurf\_ndx & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/beam\_refsurf\_ndx & The index to retrieve information about the sea surface from '/reference\_surface\_section/' fields & \\ 
    \hline
-   /freeboard\_segment/height\_segment\_id & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/height\_segment\_id & The ID to retrieve information about the ice surface from '/freeboard\_segment/heights/' fields & \\ 
    \hline
-   freeboard\_segment/seg\_dist\_x & ATL10 Data Product Columns \\ 
-\hhline{|=|=|}
-   /freeboard\_segment/heights/layer\_flag & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/seg\_dist\_x & The ground distance of the footprint's distance from IS-2's last equator crossing & m\\ 
+\hhline{|=|=|=|}
+   /freeboard\_segment/heights/layer\_flag & A boolean flag of whether ice surface measurement was likely clear or obstructed & [0,1]\\ 
    \hline
-   /freeboard\_segment/heights/ice\_conc\_ssmi & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/heights/ice\_conc\_ssmi & The measured ice concentration of the beam's footprint & [0-1] \\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_sigmat & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/heights/height\_segment\_sigma & The standard deviation of the recorded ice surface height & m\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_ssh\_flag & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/heights/height\_segment\_ssh\_flag & The classification of sea ice surface of the footprint & [0,1,2]\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_rms & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/heights/height\_segment\_rms & The root mean square error of the inferred sea ice height determined from the photon distribution & m\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_height & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/heights/height\_segment\_height & The estimated height of the sea ice surface (relative to the tide-free mean sea surface height) & m\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_confidence & ATL10 Data Product Columns \\
-\hhline{|=|=|}
-   /reference\_surface\_section/beam\_refsurf\_dist\_x & ATL10 Data Product Columns \\ 
+   /freeboard\_segment/heights/height\_segment\_confidence & The confidence of the ice height measurement & [0,1]\\
+\hhline{|=|=|=|}
+   /reference\_surface\_section/beam\_refsurf\_dist\_x & The ground distance of the reference sea surface's distance from IS-2's last equator crossing & m\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_interp\_flag & ATL10 Data Product Columns \\ 
+   /reference\_surface\_section/beam\_refsurf\_interp\_flag & The interpolation flag for the reference sea surface & [-1,0,1,2,3]\\ 
    \hline
-   /reference\_surface\_section/beam\_fb\_unc\_refsurf & ATL10 Data Product Columns \\ 
+   /reference\_surface\_section/beam\_fb\_unc\_refsurf & The uncertainty of the reference sea surface's elevation & [0-1]\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_mss & ATL10 Data Product Columns \\ 
+   /reference\_surface\_section/beam\_refsurf\_mss & The mean sea surface height across the length of the reference surface scale & m\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_height & ATL10 Data Product Columns \\ 
+   /reference\_surface\_section/beam\_refsurf\_height & The mean height of the sea surface, across all 6 beams & m\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_sigma & ATL10 Data Product Columns \\ 
+   /reference\_surface\_section/beam\_refsurf\_sigma & The standard deviation of the sea surface & m\\ 
    \hline
   \end{tabularx}
+   \end{adjustwidth}
 \end{table}
