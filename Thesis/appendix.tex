@@ -1,10 +1,12 @@
 % !TeX root = main.tex
-  \chapter{Appendix A: ATL10 Product}\label{appendix:A}
+
+\fakesection{Appendix A: ATL10 Product}\label{appendix:A}
+%   \chapter{}\label{appendix:A}
 \tiny
   \begin{table}[htbp]
    \begin{adjustwidth}{-4em}{-4em}
    \centering
-  \begin{tabularx}{1.33\textwidth} {|l|X|l|}
+  \begin{tabularx}{1.33\textwidth} {|X|X|l|}
    \hline
    Field Name & Description & Units\\ 
 \hhline{|=|=|=|}
@@ -26,31 +28,31 @@
    \hline
    /freeboard\_segment/seg\_dist\_x & The ground distance of the footprint's distance from IS-2's last equator crossing & m\\ 
 \hhline{|=|=|=|}
-   /freeboard\_segment/heights/layer\_flag & A boolean flag of whether ice surface measurement was likely clear or obstructed & [0,1]\\ 
+   /freeboard\_segment/heights/layer\_flag & A boolean flag of whether ice surface estimate was likely clear or obstructed & [0,1]\\ 
    \hline
    /freeboard\_segment/heights/ice\_conc\_ssmi & The measured ice concentration of the beam's footprint & [0-1] \\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_sigma & The standard deviation of the recorded ice surface height & m\\ 
+   /freeboard\_segment/heights/\newline \indent height\_segment\_sigma & The standard deviation of the recorded ice surface height & m\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_ssh\_flag & The classification of sea ice surface of the footprint & [0,1,2]\\ 
+   /freeboard\_segment/heights/\newline \indent height\_segment\_ssh\_flag & The classification of sea ice surface of the footprint & [0,1,2]\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_rms & The root mean square error of the inferred sea ice height determined from the photon distribution & m\\ 
+   /freeboard\_segment/heights/\newline \indent height\_segment\_rms & The root mean square error of the inferred sea ice height determined from the photon distribution & m\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_height & The estimated height of the sea ice surface (relative to the tide-free mean sea surface height) & m\\ 
+   /freeboard\_segment/heights/\newline \indent height\_segment\_height & The estimated height of the sea ice surface (relative to the tide-free mean sea surface height) & m\\ 
    \hline
-   /freeboard\_segment/heights/height\_segment\_confidence & The confidence of the ice height measurement & [0,1]\\
+   /freeboard\_segment/heights/\newline \indent height\_segment\_confidence & The confidence of the ice height estimate & [0,1]\\
 \hhline{|=|=|=|}
-   /reference\_surface\_section/beam\_refsurf\_dist\_x & The ground distance of the reference sea surface's distance from IS-2's last equator crossing & m\\ 
+   /reference\_surface\_section/beam\_refsurf \newline \indent\_dist\_x & The ground distance of the reference sea surface from IS-2's last equator crossing & m\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_interp\_flag & The interpolation flag for the reference sea surface & [-1,0,1,2,3]\\ 
+   /reference\_surface\_section/beam\_refsurf \newline \indent\_interp\_flag & The interpolation flag for the reference sea surface & [-1,0,1,2,3]\\ 
    \hline
-   /reference\_surface\_section/beam\_fb\_unc\_refsurf & The uncertainty of the reference sea surface's elevation & [0-1]\\ 
+   /reference\_surface\_section/beam\_fb\_unc \newline \indent\_refsurf & The uncertainty of the reference sea surface's elevation & [0-1]\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_mss & The mean sea surface height across the length of the reference surface scale & m\\ 
+   /reference\_surface\_section/beam\_refsurf \newline \indent\_mss & The mean sea surface height across the length of the reference surface scale & m\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_height & The mean height of the sea surface, across all 6 beams & m\\ 
+   /reference\_surface\_section/beam\_refsurf \newline \indent\_height & The mean height of the sea surface, across all 6 beams & m\\ 
    \hline
-   /reference\_surface\_section/beam\_refsurf\_sigma & The standard deviation of the sea surface & m\\ 
+   /reference\_surface\_section/beam\_refsurf \newline \indent\_sigma & The standard deviation of the sea surface & m\\ 
    \hline
   \end{tabularx}
    \end{adjustwidth}

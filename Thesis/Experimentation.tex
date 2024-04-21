@@ -16,7 +16,7 @@ The coincident data is first extracted from the ICEYE imagery, yielding 4,683 17
 \]
 \end{figure}
   
-Using Equation 1.1, each tile's elevation readings are converted to their associated thickness. Some values of freeboard are negative, so they are interpreted to represent the absence of snow and an overestimate of sea ice surface elevation. The negative freeboard values are then added to the sea ice surface elevation to compensate. Each tile's interpolated ice thickness can be visualized in Figure 3.1.
+Using Equation 1.1, each tile's elevation readings are converted to their associated thickness. Some values of freeboard are negative, so they are interpreted to represent the absence of snow and an overestimate of sea ice surface elevation. The negative freeboard values are then added to the sea ice surface elevation to compensate. Each tile's interpolated ice thickness can be visualized in Figure \ref{fig:ice-thickness-interpolation}.
 
 \begin{figure}[h!]
 	\centering
@@ -49,7 +49,7 @@ The training process for the model uses 80\% of the data to train and 20\% to te
 	\label{fig:model-results}
 \end{figure}
 
-After 100 epochs, the model fails to converge (Figure 3.3). The L1 Loss function plateaus at $\approx0.66$, and the model predicts a concentrated set of values slightly lower than the test set's mean. This value can be explained by the L1 Loss function's insensitivity towards outliers, as the mean (vertical bar) would be shifted right because of the skew in the input distribution.
+After 100 epochs, the model fails to converge (Figure \ref{fig:model-results}). The L1 Loss function plateaus at $\approx0.66$, and the model predicts a concentrated set of values slightly lower than the test set's mean. This value can be explained by the L1 Loss function's insensitivity towards outliers, as the mean (vertical bar) would be shifted right because of the skew in the input distribution.
 
 The model reports an R\textsuperscript{2} value of -.056 and a RMSE of 0.9996, both of which suggest the model does not fit the data at all. The normalized RMSE is 0.14, which seemingly better, is only the result of the relatively narrow range of ice thicknesses being predicted in the testing set. Minor changes to the activation function and hyper-parameters yielded no significant difference to the model's evaluation metrics, nor did they assist in loss convergence. The inadequacies demonstrated by these tests suggest a more sophisticated architecture would be needed to better associate these low-resolution 1 channel images with their interpolated thickness measurements.
 
