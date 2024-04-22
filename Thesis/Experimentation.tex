@@ -1,12 +1,12 @@
 \chapter{Experimentation}
 \label{sec:Experimentation}
 
-The intuition behind developing a CNN on this dataset is novel. Many related works demonstrate the feasibility of using CNN models to classify or segment SAR imaging \cite{SAR-U-Net}, but tend not to explore regression tasks. This could be a result of minimal data like the set derived for this study being accessible to the public. Furthermore, attempting to relate IS-2 footprints to high resolution SAR imaging involves deriving information from single-channel imagery of low pixel dimension. Compounded with the 33$\%$ yield of anticipated data from the ICEYE image, the limited data problem is exacerbated. 
+The intuition behind developing a CNN on this dataset is novel. Many related works demonstrate the feasibility of using CNN models to classify or segment SAR imaging \cite{SAR-U-Net}, but tend not to explore regression tasks. This could be a result of minimal data like the set derived for this study being accessible to the public. Furthermore, attempting to relate IS-2 footprints to high resolution SAR imaging involves deriving information from single-channel imagery of low pixel dimension. The 33$\%$ yield of anticipated data from the ICEYE image exacerbates the information limitation. 
 
 \section{Setup}
-The coincident data is first extracted from the ICEYE imagery, yielding 4,683 17x17 tiles with associated LiDAR measurements. The selected densities used for interpolation are as follows, where the snow density is drawn from historical measurements during the month of January \cite{warren1999snow}.
+The coincident data is first extracted from the ICEYE imagery, yielding 4,683 17x17 images (tiles) with associated LiDAR measurements. The selected densities used for interpolation are as follows, where the snow density is drawn from historical measurements during the month of January \cite{warren1999snow}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
   \[
   \begin{aligned}[t]
     \rho_i &=  \text{Density of sea ice }(916 \frac{kg}{m^3}) \\   %	It'd be perfect to place the diagram of the sheet in the white space generated here in latex
@@ -16,7 +16,7 @@ The coincident data is first extracted from the ICEYE imagery, yielding 4,683 17
 \]
 \end{figure}
   
-Using Equation 1.1, each tile's elevation readings are converted to their associated thickness. Some values of freeboard are negative, so they are interpreted to represent the absence of snow and an overestimate of sea ice surface elevation. The negative freeboard values are then added to the sea ice surface elevation to compensate. Each tile's interpolated ice thickness can be visualized in Figure \ref{fig:ice-thickness-interpolation}.
+Using Equation \ref{eq:isostatic-equilibrium}, each tile's elevation reading is converted to its directly related thickness. Some values of freeboard are negative, so they are interpreted to represent the absence of snow and an overestimate of sea ice surface elevation. The negative freeboard values are then added to the sea ice surface elevation to compensate. Each tile's interpolated ice thickness can be visualized in Figure \ref{fig:ice-thickness-interpolation}.
 
 \begin{figure}[h!]
 	\centering
@@ -49,7 +49,7 @@ The training process for the model uses 80\% of the data to train and 20\% to te
 	\label{fig:model-results}
 \end{figure}
 
-After 100 epochs, the model fails to converge (Figure \ref{fig:model-results}). The L1 Loss function plateaus at $\approx0.66$, and the model predicts a concentrated set of values slightly lower than the test set's mean. This value can be explained by the L1 Loss function's insensitivity towards outliers, as the mean (vertical bar) would be shifted right because of the skew in the input distribution.
+After 100 epochs, the model fails to converge (Figure \ref{fig:model-results}). The L1 Loss function plateaus at $\approx0.66$, and the model predicts a concentrated set of values slightly lower than the mean of the test set. This value can be explained by the L1 Loss function's insensitivity towards outliers, as the predictions would be left of the true mean because of the rightwards skew of the input distribution.
 
 The model reports an R\textsuperscript{2} value of -.056 and a RMSE of 0.9996, both of which suggest the model does not fit the data at all. The normalized RMSE is 0.14, which seemingly better, is only the result of the relatively narrow range of ice thicknesses being predicted in the testing set. Minor changes to the activation function and hyper-parameters yielded no significant difference to the model's evaluation metrics, nor did they assist in loss convergence. The inadequacies demonstrated by these tests suggest a more sophisticated architecture would be needed to better associate these low-resolution 1 channel images with their interpolated thickness measurements.
 
